@@ -15,10 +15,10 @@ const PhotoListItem = ({ sampleData }) => {
           src={profile}
           alt="profile image"
         />
-        <h4 className="photo-list__user-info">
-          {username} <br />{" "}
-          <span className="photo-list__user-location"> {locationString}</span>
-        </h4>
+        <div className="photo-list__user-info">
+          <b>{username}</b>
+          <p className="photo-list__user-location">{locationString}</p>
+        </div>
       </div>
     </div>
   );
