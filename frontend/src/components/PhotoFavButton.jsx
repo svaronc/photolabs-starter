@@ -5,11 +5,7 @@ import "../styles/PhotoFavButton.scss";
 function PhotoFavButton() {
   const [like, setlike] = useState(false);
   const handleCLick = () => {
-    if (like) {
-      setlike(false);
-    } else {
-      setlike(true);
-    }
+    setlike(prevLike => !prevLike)
   };
   return (
     <div className="photo-list__fav-icon">
