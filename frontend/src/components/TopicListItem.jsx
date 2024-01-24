@@ -9,10 +9,10 @@ const sampleDataForTopicListItem = {
 };
 
 const TopicListItem = ({data}) => {
-  const {id, slug , title} = data
+  const {title} = data
   return (
     <div className="topic-list__item">
-      <span key={id}>{title}</span>
+      <span>{title}</span>
     </div>
   );
 };
