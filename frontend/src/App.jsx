@@ -9,12 +9,13 @@ import PhotoDetailsModal from "routes/PhotoDetailsModal";
 
 const App = () => {
   const [visible, setVisible] = useState(false);
+  const [photoDetails, setPhotoDetails] = useState({})
   
   return (
     <div className="App">
-      <HomeRoute topics = {topics} photos = {photos} setVisible = {setVisible}>
+      <HomeRoute topics = {topics} photos = {photos} setVisible = {setVisible} setPhotoDetails = {setPhotoDetails}>
       </HomeRoute>
-      {visible && <PhotoDetailsModal setVisible = {setVisible}/>}
+      {visible && <PhotoDetailsModal setVisible = {setVisible} photoDetails = {photoDetails} setPhotoDetails ={setPhotoDetails}/>}
     </div>
   );
 };
