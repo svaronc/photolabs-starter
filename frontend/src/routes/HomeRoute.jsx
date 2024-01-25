@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import '../styles/HomeRoute.scss';
 import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
 const HomeRoute = ({topics, photos}) => {
+  const [globalState, setGlobalState] = useState(0);
   return (
     <div className="home-route">
-      <TopNavigation topics = {topics}/>
-      <PhotoList photos = {photos}/>
+      <TopNavigation topics = {topics} globalState = {globalState} />
+      <PhotoList photos = {photos} globalState = {globalState} setGlobalState = {setGlobalState}/>
     </div>
   );
 };

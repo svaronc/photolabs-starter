@@ -3,13 +3,13 @@ import React from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
-const PhotoListItem = ({ sampleData }) => {
+const PhotoListItem = ({ sampleData , globalState, setGlobalState}) => {
   const { user, id, urls, location } = sampleData;
   const locationString = `${location.city}, ${location.country}`;
   
   return (
     <div className="photo-list__item" key={id}>
-      <PhotoFavButton/>
+      <PhotoFavButton globalState = {globalState} setGlobalState = {setGlobalState}/>
       <img className="photo-list__image" src={urls.regular} alt="picture" />
       <div className="photo-list__user-details">
         <img

@@ -2,10 +2,11 @@ import React, { useCallback, useState } from "react";
 
 import FavIcon from "./FavIcon";
 import "../styles/PhotoFavButton.scss";
-function PhotoFavButton() {
-  const [like, setlike] = useState(false);
+function PhotoFavButton({globalState, setGlobalState}) {
+  const [like, setLike] = useState(false);
   const handleCLick = () => {
-    setlike(prevLike => !prevLike)
+    setLike(prevLike => !prevLike)
+    setGlobalState(prev => prev? prev : !prev)
   };
   return (
     <div className="photo-list__fav-icon">
