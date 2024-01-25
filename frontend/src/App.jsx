@@ -14,7 +14,7 @@ const App = () => {
     <div className="App">
       <HomeRoute topics = {topics} photos = {photos} setVisible = {setVisible}>
       </HomeRoute>
-      {visible && <PhotoDetailsModal/>}
+      {visible && <PhotoDetailsModal setVisible = {setVisible}/>}
     </div>
   );
 };
