@@ -11,7 +11,6 @@ const App = () => {
   const [visible, setVisible] = useState(false);
   const [photoDetails, setPhotoDetails] = useState({})
   const [favorites, setFavorites] = useState([]);
-  
   return (
     <div className="App">
       <HomeRoute topics = {topics} photos = {photos} setVisible = {setVisible} setPhotoDetails = {setPhotoDetails} favorites ={favorites} setFavorites ={setFavorites} >

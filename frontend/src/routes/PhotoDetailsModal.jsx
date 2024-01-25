@@ -11,6 +11,7 @@ const PhotoDetailsModal = ({ setVisible, photoDetails, setPhotoDetails, photos, 
     setPhotoDetails({});
     console.log(photoDetails);
   };
+  const similarPhotos =  Object.values(photoDetails['similar_photos'])
   return (
     <div className="photo-details-modal">
       <button
@@ -39,7 +40,7 @@ const PhotoDetailsModal = ({ setVisible, photoDetails, setPhotoDetails, photos, 
       </div>
       <h4 className="photo-details-modal__header">Similar photos</h4>
       <div className="photo-details-modal__top-bar">
-          <PhotoList setPhotoDetails = {setPhotoDetails}  photos = {photos} favorites = {favorites} setFavorites = {setFavorites}/>
+          <PhotoList setPhotoDetails = {setPhotoDetails}  photos = {similarPhotos} favorites = {favorites} setFavorites = {setFavorites}/>
         </div>
       </div>
     </div>

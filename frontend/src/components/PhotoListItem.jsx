@@ -4,7 +4,7 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = ({ sampleData , favorites, setFavorites, setVisible,setPhotoDetails}) => {
-  const { user, id, urls, location } = sampleData;
+  const { user, id, urls, location ,similar_photos} = sampleData;
   const locationString = `${location.city}, ${location.country}`;
   const handlePhotoClick = () => {
     setVisible(prev => !prev);
@@ -13,7 +13,8 @@ const PhotoListItem = ({ sampleData , favorites, setFavorites, setVisible,setPho
       username: user.username,
       url: urls.full,
       profile: user.profile,
-      location: locationString
+      location: locationString,
+      similar_photos: similar_photos
     });
   }
   return (
