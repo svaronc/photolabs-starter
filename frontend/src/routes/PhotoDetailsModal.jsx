@@ -3,9 +3,9 @@ import React from "react";
 import "../styles/PhotoDetailsModal.scss";
 import closeSymbol from "../assets/closeSymbol.svg";
 import PhotoFavButton from "components/PhotoFavButton";
+import PhotoList from "components/PhotoList";
 
-const PhotoDetailsModal = ({ setVisible, photoDetails, setPhotoDetails }) => {
-  console.log("log props details>>>", photoDetails);
+const PhotoDetailsModal = ({ setVisible, photoDetails, setPhotoDetails, photos, favorites, setFavorites}) => {
   const hanldleCloseButton = () => {
     setVisible(false);
     setPhotoDetails({});
@@ -20,14 +20,13 @@ const PhotoDetailsModal = ({ setVisible, photoDetails, setPhotoDetails }) => {
         <img src={closeSymbol} alt="close symbol" />
       </button>
       <div className="photo-details-modal__images">
+      <PhotoFavButton favorites = {favorites} setFavorites = {setFavorites} id = {photoDetails.id}/>
         <img
           className="photo-details-modal__image"
           src={photoDetails.url}
           alt="picture"
         />
-      </div>
-
-      <div className="photo-details-modal__photographer-details">
+        <div className=" photo-details-modal__photographer-details">
         <img
           className="photo-details-modal__photographer-profile"
           src={photoDetails.profile}
@@ -35,7 +34,12 @@ const PhotoDetailsModal = ({ setVisible, photoDetails, setPhotoDetails }) => {
         />
         <div className="photo-details-modal__photographer-info">
           <b>{photoDetails.username}</b>
-          <p className="photo-list__user-location">{photoDetails.location}</p>
+          <p className="photo-details-modal__photographer-location">{photoDetails.location}</p>
+        </div>
+      </div>
+      <h4 className="photo-details-modal__header">Similar photos</h4>
+      <div className="photo-details-modal__top-bar">
+          <PhotoList setPhotoDetails = {setPhotoDetails}  photos = {photos} favorites = {favorites} setFavorites = {setFavorites}/>
         </div>
       </div>
     </div>

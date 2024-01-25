@@ -18,7 +18,7 @@ const PhotoListItem = ({ sampleData , favorites, setFavorites, setVisible,setPho
   }
   return (
     <div className="photo-list__item" key={id}>
-      <PhotoFavButton favorites = {favorites} setFavor  ites = {setFavorites} id = {id}/>
+      <PhotoFavButton favorites = {favorites} setFavorites = {setFavorites} id = {id}/>
       <img onClick={handlePhotoClick} className="photo-list__image" src={urls.regular} alt="picture" />
       <div className="photo-list__user-details">
         <img
