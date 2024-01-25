@@ -5,7 +5,7 @@ import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
 const HomeRoute = ({topics, photos}) => {
-  const [globalState, setGlobalState] = useState(0);
+  const [globalState, setGlobalState] = useState([]);
   return (
     <div className="home-route">
       <TopNavigation topics = {topics} globalState = {globalState} />

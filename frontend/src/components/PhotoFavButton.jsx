@@ -2,16 +2,21 @@ import React, { useCallback, useState } from "react";
 
 import FavIcon from "./FavIcon";
 import "../styles/PhotoFavButton.scss";
-function PhotoFavButton({globalState, setGlobalState}) {
-  const [like, setLike] = useState(false);
+function PhotoFavButton({id, globalState, setGlobalState}) {
+  const isFavorite = globalState.includes(id);
+
   const handleCLick = () => {
-    setLike(prevLike => !prevLike)
-    setGlobalState(prev => prev? prev : !prev)
+    if(isFavorite) {
+      setGlobalState(globalState.filter(photoId => photoId !== id))
+    } else {
+      setGlobalState([...globalState, id])
+    }
+    
   };
   return (
     <div className="photo-list__fav-icon">
       <div className="photo-list__fav-icon-svg">
-        <FavIcon selected = {like} onClick={handleCLick} />
+        <FavIcon selected = {isFavorite} onClick={handleCLick} />
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ const PhotoListItem = ({ sampleData , globalState, setGlobalState}) => {
   
   return (
     <div className="photo-list__item" key={id}>
-      <PhotoFavButton globalState = {globalState} setGlobalState = {setGlobalState}/>
+      <PhotoFavButton globalState = {globalState} setGlobalState = {setGlobalState} id = {id}/>
       <img className="photo-list__image" src={urls.regular} alt="picture" />
       <div className="photo-list__user-details">
         <img
