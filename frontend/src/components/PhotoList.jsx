@@ -3,15 +3,15 @@ import React from "react";
 import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
 
-const PhotoList = ({photos, globalState, setGlobalState}) => {
+const PhotoList = ({photos, favorites, setFavorites}) => {
   return (
     <ul className="photo-list">
        {photos.map((item) => (
         <PhotoListItem
           key={item.id}
           sampleData={item}
-          globalState = {globalState}
-          setGlobalState = {setGlobalState}
+          favorites = {favorites}
+          setFavorites = {setFavorites}
         ></PhotoListItem>
       ))}
     </ul>

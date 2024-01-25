@@ -2,14 +2,14 @@ import React, { useCallback, useState } from "react";
 
 import FavIcon from "./FavIcon";
 import "../styles/PhotoFavButton.scss";
-function PhotoFavButton({id, globalState, setGlobalState}) {
-  const isFavorite = globalState.includes(id);
+function PhotoFavButton({id, favorites, setFavorites}) {
+  const isFavorite = favorites.includes(id);
 
   const handleCLick = () => {
     if(isFavorite) {
-      setGlobalState(globalState.filter(photoId => photoId !== id))
+      setFavorites(favorites.filter(photoId => photoId !== id))
     } else {
-      setGlobalState([...globalState, id])
+      setFavorites([...favorites, id])
     }
     
   };
