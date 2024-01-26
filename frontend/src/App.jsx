@@ -14,25 +14,24 @@ const App = () => {
     updateToFavPhotoIds,
     setPhotoSelected,
     onClosePhotosDetailsModal,
-  } = useApplicationData;
+  } = useApplicationData();
   return (
     <div className="App">
       <HomeRoute
         topics={topics}
         photos={photos}
-        setVisible={setVisible}
-        setPhotoDetails={setPhotoDetails}
-        favorites={favorites}
-        setFavorites={setFavorites}
+        setPhotoSelected={setPhotoSelected}
+        favorites={state.favorites}
+        updateToFavPhotoIds={updateToFavPhotoIds}
       ></HomeRoute>
-      {visible && (
+      {state.visible && (
         <PhotoDetailsModal
-          setVisible={setVisible}
-          photoDetails={photoDetails}
-          setPhotoDetails={setPhotoDetails}
+          photoDetails={state.photoDetails}
+          setPhotoSelected={setPhotoSelected}
           photos={photos}
-          favorites={favorites}
-          setFavorites={setFavorites}
+          favorites={state.favorites}
+          updateToFavPhotoIds={updateToFavPhotoIds}
+          onClosePhotosDetailsModal = {onClosePhotosDetailsModal}
         />
       )}
     </div>

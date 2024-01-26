@@ -8,13 +8,10 @@ export const useApplicationData = () => {
   return {
     state: {
       favorites,
-      setFavorites,
       visible,
-      setVisible,
       photoDetails,
-      setPhotoDetails,
     },
-    updateToFavPhotoIds: () => {
+    updateToFavPhotoIds: (id) => {
       const isFavorite = favorites.includes(id);
       if(isFavorite) {
         setFavorites(favorites.filter(photoId => photoId !== id))
@@ -23,14 +20,14 @@ export const useApplicationData = () => {
       }
       
     },
-    setPhotoSelected: () => {
+    setPhotoSelected: (id,user,urls,locationString,similar_photos) => {
       setVisible((prev) => !prev);
       setPhotoDetails({
         id,
         username: user.username,
         url: urls.full,
         profile: user.profile,
-        location: locationString,
+        locationString: locationString,
         similar_photos: similar_photos,
       });
     },
