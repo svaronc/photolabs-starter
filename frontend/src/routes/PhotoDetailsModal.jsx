@@ -6,11 +6,7 @@ import PhotoFavButton from "components/PhotoFavButton";
 import PhotoList from "components/PhotoList";
 
 const PhotoDetailsModal = ({ setVisible, photoDetails, setPhotoDetails, photos, favorites, setFavorites}) => {
-  const hanldleCloseButton = () => {
-    setVisible(false);
-    setPhotoDetails({});
-    console.log(photoDetails);
-  };
+
   const similarPhotos =  Object.values(photoDetails['similar_photos'])
   return (
     <div className="photo-details-modal">

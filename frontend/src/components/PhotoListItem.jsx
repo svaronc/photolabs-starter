@@ -6,17 +6,7 @@ import PhotoFavButton from "./PhotoFavButton";
 const PhotoListItem = ({ sampleData , favorites, setFavorites, setVisible,setPhotoDetails}) => {
   const { user, id, urls, location ,similar_photos} = sampleData;
   const locationString = `${location.city}, ${location.country}`;
-  const handlePhotoClick = () => {
-    setVisible(prev => !prev);
-    setPhotoDetails({
-      id,
-      username: user.username,
-      url: urls.full,
-      profile: user.profile,
-      location: locationString,
-      similar_photos: similar_photos
-    });
-  }
+  
   return (
     <div className="photo-list__item" key={id}>
       <PhotoFavButton favorites = {favorites} setFavorites = {setFavorites} id = {id}/>
