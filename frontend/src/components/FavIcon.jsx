@@ -3,8 +3,8 @@ import React from "react";
 const FavIcon = ({ displayAlert, selected, onClick}) => {
   return (
     <svg
-      width="20"
-      height="17"
+      width="32"
+      height="31"
       viewBox="0 0 24 19"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
