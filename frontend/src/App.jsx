@@ -12,10 +12,12 @@ const App = () => {
     updateToFavPhotoIds,
     setPhotoSelected,
     onClosePhotosDetailsModal,
+    onSetTopic,
   } = useApplicationData();
   return (
     <div className="App">
       <HomeRoute
+      onSetTopic = {onSetTopic}
         topics={state.topicData}
         photos={state.photoData}
         setPhotoSelected={setPhotoSelected}

@@ -6,7 +6,8 @@ export const ACTIONS = {
   SET_PHOTO_SELECTED: "SET_PHOTO_SELECTED",
   CLOSE_PHOTO_DETAILS_MODAL: "CLOSE_PHOTO_DETAILS_MODAL",
   SET_PHOTO_DATA:" SET_PHOTO_DATA",
-  SET_PHOTO_TOPIC: "SET_PHOTO_TOPIC"
+  SET_PHOTO_TOPIC: "SET_PHOTO_TOPIC",
+  GET_PHOTOS_BY_TOPICS: "GET_PHOTOS_BY_TOPICS"
 };
 
 const initialState = {
@@ -58,6 +59,11 @@ function reducer(state, action) {
         ...state,
         topicData: action.payload
       }
+      case ACTIONS.GET_PHOTOS_BY_TOPICS:
+        return {
+          ...state,
+          photoData: action.payload
+        }
     default:
       return state;
   }
@@ -84,11 +90,9 @@ export const useApplicationData = () => {
   return {
     state,
     updateToFavPhotoIds: (id) => {
-      console.log(state);
       dispatch({ type: ACTIONS.TOGGLE_FAVORITE, id });
     },
     setPhotoSelected: (id, user, urls, locationString, similar_photos) => {
-      console.log(state);
       dispatch({
         type: ACTIONS.SET_PHOTO_SELECTED,
         id,
@@ -99,8 +103,14 @@ export const useApplicationData = () => {
       });
     },
     onClosePhotosDetailsModal: () => {
-      console.log(state);
       dispatch({ type: ACTIONS.CLOSE_PHOTO_DETAILS_MODAL });
     },
+    onSetTopic: (id) => {
+      axios
+      .get(`/api/topics/photos/${id}`)
+      .then((response) => {
+        dispatch({type:ACTIONS.GET_PHOTOS_BY_TOPICS, payload: response.data })
+      })
+    }
   };
 };
