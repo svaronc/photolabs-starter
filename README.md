@@ -31,8 +31,13 @@ PhotoLabs is an engaging photo browsing application that allows users to explore
 
 * **Photo Preview**: PhotoLabs provides a preview option where users can view a larger version of the image along with more details. This allows for an in-depth look at the photos that capture their attention.
 
-## Screenshots
+# Screenshots
 
-!["Main page"](https://github.com/svaronc/photolabs-starter/blob/main/docs/main-page.jpg)
+## Main Page
+!["Main page"](https://github.com/svaronc/photolabs-starter/blob/main/docs/main-page.jpg)4
+
+## Preview Image
 !["Preview Image"](https://github.com/svaronc/photolabs-starter/blob/main/docs/liked-photos.jpg)
+
+## Liked Photos
 !["Liked photos](https://github.com/svaronc/photolabs-starter/blob/main/docs/preview-photo.jpg)
