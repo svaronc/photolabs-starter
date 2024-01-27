@@ -3,6 +3,7 @@ import "./App.scss";
 import HomeRoute from "routes/HomeRoute";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
 import { useApplicationData } from "hooks/useApplicationData";
+import PhotoLikedModal from "routes/PhotoLikedModal";
 
 const App = () => {
   // Destructuring the state and functions from the custom hook.
@@ -13,6 +14,7 @@ const App = () => {
     setPhotoSelected,
     onClosePhotosDetailsModal,
     onSetTopic,
+    onClickFavBadge,
   } = useApplicationData();
 
   return (
@@ -25,6 +27,7 @@ const App = () => {
         setPhotoSelected={setPhotoSelected} // Function to handle photo selection
         favorites={state.favorites} // Array of favorite photo IDs
         updateToFavPhotoIds={updateToFavPhotoIds} // Function to update favorite photos
+        onClickFavBadge={onClickFavBadge}
       ></HomeRoute>
 
       {/* Conditionally rendering the PhotoDetailsModal */}
@@ -33,6 +36,16 @@ const App = () => {
         <PhotoDetailsModal
           photoDetails={state.photoDetails} // Details of the selected photo
           setPhotoSelected={setPhotoSelected} // Function to set selected photo
+          photos={state.photoData} // Data for photos
+          favorites={state.favorites} // Array of favorite photo IDs
+          updateToFavPhotoIds={updateToFavPhotoIds} // Function to update favorite photos
+          onClosePhotosDetailsModal={onClosePhotosDetailsModal} // Function to close the modal
+        />
+      )}
+      {state.likedPhotos && (
+        <PhotoLikedModal
+          photoDetails={state.favoritesData} // Details of the selected photo
+          // Functio to set select photo
           photos={state.photoData} // Data for photos
           favorites={state.favorites} // Array of favorite photo IDs
           updateToFavPhotoIds={updateToFavPhotoIds} // Function to update favorite photos

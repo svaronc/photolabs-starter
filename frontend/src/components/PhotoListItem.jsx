@@ -8,6 +8,7 @@ const PhotoListItem = ({
   favorites,
   updateToFavPhotoIds,
   setPhotoSelected,
+  onLikedPhotos,
 }) => {
   const { user, id, urls, location, similar_photos } = sampleData;
   const locationString = `${location.city}, ${location.country}`;
@@ -17,7 +18,10 @@ const PhotoListItem = ({
       <PhotoFavButton
         favorites={favorites}
         updateToFavPhotoIds={updateToFavPhotoIds}
-        id={id}
+        user = {user}
+        urls = {urls}
+        location = {location}
+        id = {id}
       />
       <img
         onClick={() => {

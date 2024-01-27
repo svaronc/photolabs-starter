@@ -8,7 +8,6 @@ import PhotoList from "components/PhotoList";
 const PhotoDetailsModal = ({
   photoDetails,
   setPhotoSelected,
-  photos,
   favorites,
   updateToFavPhotoIds,
   onClosePhotosDetailsModal,

@@ -18,7 +18,6 @@ const PhotoList = ({
           favorites={favorites}
           updateToFavPhotoIds={updateToFavPhotoIds}
           setPhotoSelected={setPhotoSelected}
-          setPhotoDetails
         ></PhotoListItem>
       ))}
     </ul>

@@ -9,6 +9,8 @@ export const ACTIONS = {
   SET_PHOTO_DATA: "SET_PHOTO_DATA",
   SET_PHOTO_TOPIC: "SET_PHOTO_TOPIC",
   GET_PHOTOS_BY_TOPICS: "GET_PHOTOS_BY_TOPICS",
+  GET_LIKED_PHOTOS: "GET_LIKED_PHOTOS",
+  SET_LIKED_PHOTOS: "SET_LIKED_PHOTOS",
 };
 
 // Initial state for the reducer
@@ -18,6 +20,8 @@ const initialState = {
   favorites: [],
   photoData: [],
   topicData: [],
+  favoritesData: [],
+  likedPhotos: false,
 };
 
 // Reducer function to handle state changes based on dispatched actions
@@ -25,13 +29,28 @@ function reducer(state, action) {
   switch (action.type) {
     case ACTIONS.TOGGLE_FAVORITE:
       const isFavorite = state.favorites.includes(action.id);
-      // Toggle favorite status of a photo
+      let newFavoritesData = [...state.favoritesData];
+      if (isFavorite) {
+        newFavoritesData = newFavoritesData.filter(
+          (photo) => photo.id !== action.id
+        );
+      } else {
+        newFavoritesData.push({
+          id: action.id,
+          user: action.user,
+          urls: action.urls,
+          location: action.location,
+        });
+      }
       return {
         ...state,
         favorites: isFavorite
           ? state.favorites.filter((photoId) => photoId !== action.id)
           : [...state.favorites, action.id],
+        favoritesData: newFavoritesData,
       };
+
+    // ... rest of the cases
 
     case ACTIONS.SET_PHOTO_SELECTED:
       // Set details of a selected photo
@@ -54,6 +73,7 @@ function reducer(state, action) {
         ...state,
         visible: false,
         photoDetails: {},
+        likedPhotos:false
       };
 
     case ACTIONS.SET_PHOTO_DATA:
@@ -76,7 +96,12 @@ function reducer(state, action) {
         ...state,
         photoData: action.payload,
       };
-
+    case ACTIONS.GET_LIKED_PHOTOS:
+      console.log(state.likedPhotos);
+      return {
+        ...state,
+        likedPhotos: !state.likedPhotos,
+      };
     default:
       return state;
   }
@@ -100,8 +125,9 @@ export const useApplicationData = () => {
   }, []);
 
   // Function to toggle the favorite status of a photo
-  const updateToFavPhotoIds = (id) => {
-    dispatch({ type: ACTIONS.TOGGLE_FAVORITE, id });
+  const updateToFavPhotoIds = (id,user, urls, location) => {
+    console.log(state.favoritesData);
+    dispatch({ type: ACTIONS.TOGGLE_FAVORITE, id,user, urls, location});
   };
 
   // Function to set the currently selected photo
@@ -130,12 +156,16 @@ export const useApplicationData = () => {
       });
     });
   };
-
+ 
+  const onClickFavBadge = () => {
+    dispatch({ type: ACTIONS.GET_LIKED_PHOTOS });
+  };
   return {
     state,
     updateToFavPhotoIds,
     setPhotoSelected,
     onClosePhotosDetailsModal,
     onSetTopic,
+    onClickFavBadge,
   };
 };
