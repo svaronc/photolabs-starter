@@ -33,6 +33,6 @@ PhotoLabs is an engaging photo browsing application that allows users to explore
 
 ## Screenshots
 
-!["Main page"]()
-!["Preview Image"]()
-!["Liked photos]()
+!["Main page"](https://github.com/svaronc/photolabs-starter/blob/main/docs/main-page.jpg)
+!["Preview Image"](https://github.com/svaronc/photolabs-starter/blob/main/docs/liked-photos.jpg)
+!["Liked photos](https://github.com/svaronc/photolabs-starter/blob/main/docs/preview-photo.jpg)
