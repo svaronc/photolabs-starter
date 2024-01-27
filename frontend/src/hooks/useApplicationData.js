@@ -69,36 +69,28 @@ export const useApplicationData = () => {
     axios
       .get("/api/photos")
       .then((response) => {
-        console.log(response.data);
         dispatch({type:ACTIONS.SET_PHOTO_DATA, payload: response.data })
       })
-      .catch((error) => {
-        console.error(error);
-      });
   }, []);
 
   useEffect(() => {
     axios
       .get("/api/topics")
       .then((response) => {
-        console.log(response.data);
         dispatch({type:ACTIONS.SET_PHOTO_TOPIC, payload: response.data })
       })
-      .catch((error) => {
-        console.error(error);
-      });
   }, [])
 
   return {
     state,
     updateToFavPhotoIds: (id) => {
       console.log(state);
-      dispatch({ type: "TOGGLE_FAVORITE", id });
+      dispatch({ type: ACTIONS.TOGGLE_FAVORITE, id });
     },
     setPhotoSelected: (id, user, urls, locationString, similar_photos) => {
       console.log(state);
       dispatch({
-        type: "SET_PHOTO_SELECTED",
+        type: ACTIONS.SET_PHOTO_SELECTED,
         id,
         user,
         urls,
@@ -108,7 +100,7 @@ export const useApplicationData = () => {
     },
     onClosePhotosDetailsModal: () => {
       console.log(state);
-      dispatch({ type: "CLOSE_PHOTO_DETAILS_MODAL" });
+      dispatch({ type: ACTIONS.CLOSE_PHOTO_DETAILS_MODAL });
     },
   };
 };
