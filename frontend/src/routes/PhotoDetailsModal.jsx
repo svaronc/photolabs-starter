@@ -11,8 +11,9 @@ const PhotoDetailsModal = ({
   favorites,
   updateToFavPhotoIds,
   onClosePhotosDetailsModal,
+  photos
 }) => {
-  const similarPhotos = Object.values(photoDetails["similar_photos"]);
+  // const similarPhotos = Object.values(photoDetails["similar_photos"]);
   return (
     <div className="photo-details-modal">
       <button
@@ -25,23 +26,27 @@ const PhotoDetailsModal = ({
         <PhotoFavButton
           favorites={favorites}
           updateToFavPhotoIds={updateToFavPhotoIds}
-          id={photoDetails.id}
+          id={photoDetails[0].id}
+          user={photoDetails[0].user}
+          urls={photoDetails[0].urls}
+          location={photoDetails[0].location}
+          similar_photos={photoDetails[0]["similar_photos"]}
         />
         <img
           className="photo-details-modal__image"
-          src={photoDetails.url}
+          src={photoDetails[0].urls.full}
           alt="picture"
         />
         <div className=" photo-details-modal__photographer-details">
           <img
             className="photo-details-modal__photographer-profile"
-            src={photoDetails.profile}
+            src={photoDetails[0].user.profile}
             alt="profile image"
           />
           <div className="photo-details-modal__photographer-info">
-            <b>{photoDetails.username}</b>
+            <b>{photoDetails[0].user.username}</b>
             <p className="photo-details-modal__photographer-location">
-              {photoDetails.location}
+              {`${photoDetails[0].location.city} ${photoDetails[0].location.country}  `}
             </p>
           </div>
         </div>
@@ -49,9 +54,10 @@ const PhotoDetailsModal = ({
         <div className="photo-details-modal__top-bar">
           <PhotoList
             setPhotoSelected={setPhotoSelected}
-            photos={similarPhotos}
+            photos={photoDetails[0]["similar_photos"]}
             favorites={favorites}
             updateToFavPhotoIds={updateToFavPhotoIds}
+            fullPhotoData = {photos}
           />
         </div>
       </div>

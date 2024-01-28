@@ -8,6 +8,7 @@ const PhotoList = ({
   favorites,
   setPhotoSelected,
   updateToFavPhotoIds,
+  fullPhotoData,
 }) => {
   return (
     <ul className="photo-list">
@@ -18,6 +19,7 @@ const PhotoList = ({
           favorites={favorites}
           updateToFavPhotoIds={updateToFavPhotoIds}
           setPhotoSelected={setPhotoSelected}
+          fullPhotoData = {fullPhotoData}
         ></PhotoListItem>
       ))}
     </ul>

@@ -50,6 +50,7 @@ const App = () => {
           favorites={state.favorites} // Array of favorite photo IDs
           updateToFavPhotoIds={updateToFavPhotoIds} // Function to update favorite photos
           onClosePhotosDetailsModal={onClosePhotosDetailsModal} // Function to close the modal
+          setPhotoSelected={setPhotoSelected}
         />
       )}
     </div>

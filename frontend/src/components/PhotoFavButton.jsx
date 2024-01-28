@@ -9,6 +9,7 @@ function PhotoFavButton({
   location,
   favorites,
   updateToFavPhotoIds,
+  similar_photos,
 }) {
   return (
     <div className="photo-list__fav-icon">
@@ -16,7 +17,7 @@ function PhotoFavButton({
         <FavIcon
           selected={favorites.includes(id)}
           onClick={() => {
-            updateToFavPhotoIds(id, user, urls, location);
+            updateToFavPhotoIds(id, user, urls, location,similar_photos);
             
           }}
         />

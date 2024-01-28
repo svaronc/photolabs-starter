@@ -8,29 +8,52 @@ const PhotoListItem = ({
   favorites,
   updateToFavPhotoIds,
   setPhotoSelected,
-  onLikedPhotos,
+  fullPhotoData,
 }) => {
   const { user, id, urls, location, similar_photos } = sampleData;
-  const locationString = `${location.city}, ${location.country}`;
-
+  const dataForPhotoId = fullPhotoData
+    ? fullPhotoData.find((item) => item.id === id)
+    : null;
   return (
     <div className="photo-list__item" key={id}>
-      <PhotoFavButton
-        favorites={favorites}
-        updateToFavPhotoIds={updateToFavPhotoIds}
-        user = {user}
-        urls = {urls}
-        location = {location}
-        id = {id}
-      />
-      <img
+      {similar_photos !== undefined ? (
+        <PhotoFavButton
+          favorites={favorites}
+          updateToFavPhotoIds={updateToFavPhotoIds}
+          user={user}
+          urls={urls}
+          location={location}
+          id={id}
+          similar_photos={similar_photos}
+        />
+        
+      ) : (
+        <PhotoFavButton
+          favorites={favorites}
+          updateToFavPhotoIds={updateToFavPhotoIds}
+          user={user}
+          urls={urls}
+          location={location}
+          id={id}
+          similar_photos={dataForPhotoId.similar_photos}
+        />
+      )}
+      {Array.isArray(similar_photos)? <img
         onClick={() => {
-          setPhotoSelected(id, user, urls, locationString, similar_photos);
+          setPhotoSelected(id, user, urls, location, similar_photos);
         }}
         className="photo-list__image"
         src={urls.regular}
         alt="picture"
-      />
+      /> : <img
+      onClick={() => {
+        setPhotoSelected(id, user, urls, location, dataForPhotoId.similar_photos);
+      }}
+      className="photo-list__image"
+      src={urls.regular}
+      alt="picture"
+    />}
+      
       <div className="photo-list__user-details">
         <img
           className="photo-list__user-profile"
@@ -39,7 +62,7 @@ const PhotoListItem = ({
         />
         <div className="photo-list__user-info">
           <b>{user.username}</b>
-          <p className="photo-list__user-location">{locationString}</p>
+          <p className="photo-list__user-location">{`${location.city}, ${location.country}`}</p>
         </div>
       </div>
     </div>

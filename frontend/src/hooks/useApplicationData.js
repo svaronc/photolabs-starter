@@ -16,7 +16,7 @@ export const ACTIONS = {
 // Initial state for the reducer
 const initialState = {
   visible: false,
-  photoDetails: {},
+  photoDetails: [],
   favorites: [],
   photoData: [],
   topicData: [],
@@ -40,6 +40,7 @@ function reducer(state, action) {
           user: action.user,
           urls: action.urls,
           location: action.location,
+          similar_photos: action.similar_photos,
         });
       }
       return {
@@ -57,14 +58,14 @@ function reducer(state, action) {
       return {
         ...state,
         visible: !state.visible,
-        photoDetails: {
+        likedPhotos:false,
+        photoDetails: [{
           id: action.id,
-          username: action.user.username,
-          url: action.urls.full,
-          profile: action.user.profile,
-          locationString: action.locationString,
+          user: action.user,
+          urls: action.urls,
+          location: action.location,
           similar_photos: action.similar_photos,
-        },
+        }],
       };
 
     case ACTIONS.CLOSE_PHOTO_DETAILS_MODAL:
@@ -72,7 +73,7 @@ function reducer(state, action) {
       return {
         ...state,
         visible: false,
-        photoDetails: {},
+        photoDetails: [],
         likedPhotos:false
       };
 
@@ -125,19 +126,19 @@ export const useApplicationData = () => {
   }, []);
 
   // Function to toggle the favorite status of a photo
-  const updateToFavPhotoIds = (id,user, urls, location) => {
+  const updateToFavPhotoIds = (id,user, urls, location,similar_photos) => {
     console.log(state.favoritesData);
-    dispatch({ type: ACTIONS.TOGGLE_FAVORITE, id,user, urls, location});
+    dispatch({ type: ACTIONS.TOGGLE_FAVORITE, id,user, urls, location,similar_photos});
   };
 
   // Function to set the currently selected photo
-  const setPhotoSelected = (id, user, urls, locationString, similar_photos) => {
+  const setPhotoSelected = (id, user, urls, location, similar_photos) => {
     dispatch({
       type: ACTIONS.SET_PHOTO_SELECTED,
       id,
       user,
       urls,
-      locationString,
+      location,
       similar_photos,
     });
   };
