@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../styles/TopicListItem.scss";
+import "./TopicListItem.scss";
 
 const TopicListItem = ({ data, id, onSetTopic }) => {
   const { title } = data;

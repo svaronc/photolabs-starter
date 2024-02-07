@@ -1,9 +1,9 @@
 import React from "react";
 import "./App.scss";
-import HomeRoute from "routes/HomeRoute";
-import PhotoDetailsModal from "routes/PhotoDetailsModal";
+import HomeRoute from "routes/HomeRoute/HomeRoute";
+import PhotoDetailsModal from "routes/PhotoDetailsModal/PhotoDetailsModal";
 import { useApplicationData } from "hooks/useApplicationData";
-import PhotoLikedModal from "routes/PhotoLikedModal";
+import PhotoLikedModal from "routes/PhotoLikedModal/PhotoLikedModal";
 
 const App = () => {
   // Destructuring the state and functions from the custom hook.

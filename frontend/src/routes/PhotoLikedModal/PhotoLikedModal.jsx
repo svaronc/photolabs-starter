@@ -1,9 +1,8 @@
 import React from "react";
 
-import "../styles/PhotoDetailsModal.scss";
-import closeSymbol from "../assets/closeSymbol.svg";
-import PhotoFavButton from "components/PhotoFavButton";
-import PhotoList from "components/PhotoList";
+import "../PhotoDetailsModal/PhotoDetailsModal";
+import closeSymbol from "/home/svaronc/lighthouse/photolabs-starter/frontend/src/assets/closeSymbol.svg";
+import PhotoList from "components/PhotoList/PhotoList";
 
 const PhotoLikedModal = ({
   photoDetails,

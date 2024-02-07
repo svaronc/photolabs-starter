@@ -1,8 +1,8 @@
 import React from "react";
 
-import "../styles/PhotoList.scss";
-import PhotoListItem from "./PhotoListItem";
-import { Loading } from "./Loading";
+import "./PhotoList.scss";
+import PhotoListItem from "../PhotoListItem/PhotoListItem";
+import { Loading } from "../Loading/Loading";
 
 const PhotoList = ({
   photos,

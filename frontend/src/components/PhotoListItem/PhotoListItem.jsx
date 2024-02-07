@@ -1,7 +1,7 @@
 import React from "react";
 
-import "../styles/PhotoListItem.scss";
-import PhotoFavButton from "./PhotoFavButton";
+import "./PhotoListItem.scss";
+import PhotoFavButton from "../PhotoFavButton/PhotoFavButton";
 
 const PhotoListItem = ({
   sampleData,

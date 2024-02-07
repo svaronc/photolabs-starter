@@ -1,7 +1,7 @@
 import React from "react";
 
-import "../styles/TopicList.scss";
-import TopicListItem from "./TopicListItem";
+import "./TopicList.scss";
+import TopicListItem from "../TopicListItem/TopicListItem";
 
 const TopicList = ({ topics, onSetTopic }) => {
   return (
