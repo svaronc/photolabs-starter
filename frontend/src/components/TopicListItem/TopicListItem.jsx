@@ -6,7 +6,14 @@ const TopicListItem = ({ data, id, onSetTopic }) => {
   const { title } = data;
   return (
     <div className="topic-list__item">
-      <span onClick={() => onSetTopic(id)}>{title}</span>
+      <span
+        onClick={() => {
+         
+          onSetTopic(id);
+        }}
+      >
+        {title}
+      </span>
     </div>
   );
 };

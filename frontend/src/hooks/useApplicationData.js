@@ -104,6 +104,7 @@ function reducer(state, action) {
       return {
         ...state,
         photoData: action.payload,
+        searchItems: action.payload
       };
     case ACTIONS.GET_LIKED_PHOTOS:
       console.log(state.likedPhotos);
