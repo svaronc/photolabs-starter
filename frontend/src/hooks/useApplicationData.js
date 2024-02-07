@@ -22,6 +22,7 @@ const initialState = {
   topicData: [],
   favoritesData: [],
   likedPhotos: false,
+  loading: true,
 };
 
 // Reducer function to handle state changes based on dispatched actions
@@ -58,14 +59,16 @@ function reducer(state, action) {
       return {
         ...state,
         visible: !state.visible,
-        likedPhotos:false,
-        photoDetails: [{
-          id: action.id,
-          user: action.user,
-          urls: action.urls,
-          location: action.location,
-          similar_photos: action.similar_photos,
-        }],
+        likedPhotos: false,
+        photoDetails: [
+          {
+            id: action.id,
+            user: action.user,
+            urls: action.urls,
+            location: action.location,
+            similar_photos: action.similar_photos,
+          },
+        ],
       };
 
     case ACTIONS.CLOSE_PHOTO_DETAILS_MODAL:
@@ -74,7 +77,7 @@ function reducer(state, action) {
         ...state,
         visible: false,
         photoDetails: [],
-        likedPhotos:false
+        likedPhotos: false,
       };
 
     case ACTIONS.SET_PHOTO_DATA:
@@ -82,6 +85,7 @@ function reducer(state, action) {
       return {
         ...state,
         photoData: action.payload,
+        loading: false,
       };
 
     case ACTIONS.SET_PHOTO_TOPIC:
@@ -114,7 +118,9 @@ export const useApplicationData = () => {
   // Fetch initial photo data
   useEffect(() => {
     axios.get("/api/photos").then((response) => {
-      dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: response.data });
+      setTimeout(() => {
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: response.data });
+      }, 2000);
     });
   }, []);
 
@@ -126,9 +132,16 @@ export const useApplicationData = () => {
   }, []);
 
   // Function to toggle the favorite status of a photo
-  const updateToFavPhotoIds = (id,user, urls, location,similar_photos) => {
+  const updateToFavPhotoIds = (id, user, urls, location, similar_photos) => {
     console.log(state.favoritesData);
-    dispatch({ type: ACTIONS.TOGGLE_FAVORITE, id,user, urls, location,similar_photos});
+    dispatch({
+      type: ACTIONS.TOGGLE_FAVORITE,
+      id,
+      user,
+      urls,
+      location,
+      similar_photos,
+    });
   };
 
   // Function to set the currently selected photo
@@ -157,7 +170,7 @@ export const useApplicationData = () => {
       });
     });
   };
- 
+
   const onClickFavBadge = () => {
     dispatch({ type: ACTIONS.GET_LIKED_PHOTOS });
   };

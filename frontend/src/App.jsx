@@ -28,6 +28,7 @@ const App = () => {
         favorites={state.favorites} // Array of favorite photo IDs
         updateToFavPhotoIds={updateToFavPhotoIds} // Function to update favorite photos
         onClickFavBadge={onClickFavBadge}
+        loading ={state.loading}
       ></HomeRoute>
 
       {/* Conditionally rendering the PhotoDetailsModal */}

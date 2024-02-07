@@ -12,6 +12,7 @@ const HomeRoute = ({
   updateToFavPhotoIds,
   onSetTopic,
   onClickFavBadge,
+  loading,
 }) => {
   return (
     <div className="home-route">
@@ -26,6 +27,7 @@ const HomeRoute = ({
         photos={photos}
         favorites={favorites}
         updateToFavPhotoIds={updateToFavPhotoIds}
+        loading = {loading}
       />
     </div>
   );
