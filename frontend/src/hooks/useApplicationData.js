@@ -11,6 +11,7 @@ export const ACTIONS = {
   GET_PHOTOS_BY_TOPICS: "GET_PHOTOS_BY_TOPICS",
   GET_LIKED_PHOTOS: "GET_LIKED_PHOTOS",
   SET_LIKED_PHOTOS: "SET_LIKED_PHOTOS",
+  SEARCH: "SEARCH",
 };
 
 // Initial state for the reducer
@@ -23,6 +24,8 @@ const initialState = {
   favoritesData: [],
   likedPhotos: false,
   loading: true,
+  searchValue: "",
+  searchItems: [],
 };
 
 // Reducer function to handle state changes based on dispatched actions
@@ -86,6 +89,7 @@ function reducer(state, action) {
         ...state,
         photoData: action.payload,
         loading: false,
+        searchItems: action.payload,
       };
 
     case ACTIONS.SET_PHOTO_TOPIC:
@@ -107,6 +111,19 @@ function reducer(state, action) {
         ...state,
         likedPhotos: !state.likedPhotos,
       };
+    case ACTIONS.SEARCH:
+      let searchedItems = action.searchValue
+        ? state.photoData.filter((item) => {
+            let cityName = item.location.city.toLowerCase().trim();
+            return cityName.includes(state.searchValue.toLowerCase());
+          })
+        : state.photoData;
+      return {
+        ...state,
+        searchValue: action.searchValue,
+        searchItems: searchedItems,
+      };
+
     default:
       return state;
   }
@@ -174,6 +191,11 @@ export const useApplicationData = () => {
   const onClickFavBadge = () => {
     dispatch({ type: ACTIONS.GET_LIKED_PHOTOS });
   };
+
+  function onSearch(event) {
+    const searchValue = event.target.value;
+    dispatch({ type: ACTIONS.SEARCH, searchValue });
+  }
   return {
     state,
     updateToFavPhotoIds,
@@ -181,5 +203,6 @@ export const useApplicationData = () => {
     onClosePhotosDetailsModal,
     onSetTopic,
     onClickFavBadge,
+    onSearch,
   };
 };

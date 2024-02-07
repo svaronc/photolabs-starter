@@ -15,12 +15,16 @@ const App = () => {
     onClosePhotosDetailsModal,
     onSetTopic,
     onClickFavBadge,
+    onSearch,
   } = useApplicationData();
 
   return (
     <div className="App">
       {/* HomeRoute component displays the main page content */}
       <HomeRoute
+      searchValue = {state.searchValue}
+        searchItems= {state.searchItems}
+        onSearch={onSearch}
         onSetTopic={onSetTopic} // Function to handle setting the current topic
         topics={state.topicData} // Data for topics
         photos={state.photoData} // Data for photos
@@ -28,7 +32,7 @@ const App = () => {
         favorites={state.favorites} // Array of favorite photo IDs
         updateToFavPhotoIds={updateToFavPhotoIds} // Function to update favorite photos
         onClickFavBadge={onClickFavBadge}
-        loading ={state.loading}
+        loading={state.loading}
       ></HomeRoute>
 
       {/* Conditionally rendering the PhotoDetailsModal */}

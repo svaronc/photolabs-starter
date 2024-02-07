@@ -13,18 +13,23 @@ const HomeRoute = ({
   onSetTopic,
   onClickFavBadge,
   loading,
+  onSearch,
+  searchItems,
+  searchValue
 }) => {
   return (
     <div className="home-route">
       <TopNavigation
+        searchValue ={searchValue}
         topics={topics}
         favorites={favorites}
         onSetTopic={onSetTopic}
         onClickFavBadge = {onClickFavBadge}
+        onSearch ={ onSearch}
       />
       <PhotoList
         setPhotoSelected={setPhotoSelected}
-        photos={photos}
+        photos={searchItems}
         favorites={favorites}
         updateToFavPhotoIds={updateToFavPhotoIds}
         loading = {loading}
