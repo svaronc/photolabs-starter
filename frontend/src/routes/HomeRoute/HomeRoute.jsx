@@ -15,11 +15,15 @@ const HomeRoute = ({
   loading,
   onSearch,
   searchItems,
-  searchValue
+  searchValue,
+  onToggleMode,
+  theme
 }) => {
   return (
     <div className="home-route">
       <TopNavigation
+      theme ={theme}
+      onToggleMode ={onToggleMode}
         searchValue ={searchValue}
         topics={topics}
         favorites={favorites}

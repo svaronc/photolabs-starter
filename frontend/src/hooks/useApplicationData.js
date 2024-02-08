@@ -12,6 +12,7 @@ export const ACTIONS = {
   GET_LIKED_PHOTOS: "GET_LIKED_PHOTOS",
   SET_LIKED_PHOTOS: "SET_LIKED_PHOTOS",
   SEARCH: "SEARCH",
+  TOGGLE_MODE: "TOGGLE_MODE",
 };
 
 // Initial state for the reducer
@@ -26,6 +27,7 @@ const initialState = {
   loading: true,
   searchValue: "",
   searchItems: [],
+  darkMode: false,
 };
 
 // Reducer function to handle state changes based on dispatched actions
@@ -104,7 +106,7 @@ function reducer(state, action) {
       return {
         ...state,
         photoData: action.payload,
-        searchItems: action.payload
+        searchItems: action.payload,
       };
     case ACTIONS.GET_LIKED_PHOTOS:
       console.log(state.likedPhotos);
@@ -124,7 +126,11 @@ function reducer(state, action) {
         searchValue: action.searchValue,
         searchItems: searchedItems,
       };
-
+    case ACTIONS.TOGGLE_MODE:
+      return {
+        ...state,
+        darkMode: !state.darkMode
+      };
     default:
       return state;
   }
@@ -197,6 +203,10 @@ export const useApplicationData = () => {
     const searchValue = event.target.value;
     dispatch({ type: ACTIONS.SEARCH, searchValue });
   }
+
+  const onToggleMode = () => {
+    dispatch({ type: ACTIONS.TOGGLE_MODE });
+  };
   return {
     state,
     updateToFavPhotoIds,
@@ -205,5 +215,6 @@ export const useApplicationData = () => {
     onSetTopic,
     onClickFavBadge,
     onSearch,
+    onToggleMode,
   };
 };

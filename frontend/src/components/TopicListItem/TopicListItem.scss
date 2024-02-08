@@ -15,3 +15,19 @@
     cursor: pointer;
   }
 }
+.darkmode .topic-list__item {
+  margin-left: 24px;
+  color: #fff; /* Dark mode text color */
+}
+
+.darkmode .topic-list__item span {
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff; /* Dark mode text color */
+
+  &:hover {
+    text-decoration: overline;
+    color: #ddd; /* Dark mode hover text color */
+    cursor: pointer;
+  }
+}

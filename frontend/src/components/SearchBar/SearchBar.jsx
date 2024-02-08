@@ -4,14 +4,14 @@ import "./SearchBar.scss";
 
 export function SearchBar({ onSearch, searchValue }) {
   return (
-    <>
+    <div className="searchBar">
       <input
         type="text"
-        className="search-box"
+        className="searchInput"
         placeholder="Search images by City"
         value={searchValue}
         onChange={onSearch}
       />
-    </>
+    </div>
   );
 }

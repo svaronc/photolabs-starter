@@ -18,3 +18,12 @@
   height: 50px;
 
 }
+
+.darkmode .photo-list__fav-icon {
+  background-color: #555; /* Dark mode background color */
+  color: #fff; /* Dark mode text color */
+}
+
+.darkmode .photo-list__fav-icon-svg {
+  fill: #fff; /* Dark mode icon color */
+}

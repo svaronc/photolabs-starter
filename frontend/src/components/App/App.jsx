@@ -16,12 +16,15 @@ const App = () => {
     onSetTopic,
     onClickFavBadge,
     onSearch,
+    onToggleMode,
   } = useApplicationData();
 
   return (
-    <div className="App">
+    <div className={`App ${state.darkMode ? 'darkmode' : ''}`}>
       {/* HomeRoute component displays the main page content */}
       <HomeRoute
+      theme = {state.darkMode}
+      onToggleMode ={onToggleMode}
       searchValue = {state.searchValue}
         searchItems= {state.searchItems}
         onSearch={onSearch}

@@ -1,9 +1,10 @@
 import React from "react";
-
+import Switch from '@mui/material/Switch';
 import "./TopNavigationBar.scss";
 import TopicList from "../TopicList/TopicList";
 import FavBadge from "../FavBadge/FavBadge";
 import { SearchBar } from "../SearchBar/SearchBar";
+import DarkSwitch from '../DarkSwitch/DarkSwitch'
 
 const TopNavigation = ({
   topics,
@@ -12,6 +13,8 @@ const TopNavigation = ({
   onClickFavBadge,
   onSearch,
   searchValue,
+  onToggleMode,
+  theme
 }) => {
   return (
     <div className="top-nav-bar">
@@ -20,7 +23,7 @@ const TopNavigation = ({
       </a>
       <SearchBar onSearch={onSearch} searchValue ={searchValue}/>
       <TopicList topics={topics} onSetTopic={onSetTopic} />
-
+      <DarkSwitch theme = {theme} onToggleMode={onToggleMode}/>
       {favorites.length <= 0 ? (
         <FavBadge
           onClickFavBadge={onClickFavBadge}

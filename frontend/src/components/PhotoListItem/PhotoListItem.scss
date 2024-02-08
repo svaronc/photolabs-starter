@@ -49,3 +49,29 @@
   margin-top: 0px;
   color: #838383;
 }
+
+.darkmode .photo-list__item {
+  margin: 24px;
+  padding: 8px;
+  border-width: 0.5px;
+  border-color: #555; /* Dark mode border color */
+  border-style: solid;
+  border-radius: 8px;
+  max-width: fit-content;
+  background-color: #333; /* Dark mode background color */
+  color: #fff; /* Dark mode text color */
+}
+
+.darkmode .photo-list__image {
+  border-radius: 8px 8px 0px 0px;
+}
+
+.darkmode .photo-list__user-profile {
+  border-radius: 100%;
+}
+
+.darkmode .photo-list__user-location {
+  color: #ddd; /* Dark mode text color */
+}
+
+/* Add any additional dark mode styles here */

@@ -71,3 +71,47 @@
     background-position: 0% 50%;
   }
 }
+
+.darkmode .photo-loading__item {
+  margin: 24px;
+  padding: 8px;
+  border-width: 0.5px;
+  border-color: #555; /* Dark mode border color */
+  border-style: solid;
+  border-radius: 8px;
+  max-width: fit-content;
+  background-color: #333; /* Dark mode background color */
+  color: #fff; /* Dark mode text color */
+}
+
+.darkmode .photo-loading__image,
+.darkmode .photo-loading__user-profile,
+.darkmode .photo-loading__user-location,
+.darkmode .photo-loading__user-info {
+  background: linear-gradient(90deg, rgba(50, 50, 50, 1), rgba(30, 30, 30, 1)); /* Dark mode background gradient */
+  background-size: 400% 400%;
+  animation: loadingAnimation 3s ease-in-out infinite;
+}
+
+.darkmode .photo-loading__user-info {
+  border: darkgrey;
+  width: 80%;
+  border-radius: 8px;
+  color: #ddd; /* Dark mode text color */
+}
+
+.darkmode .photo-loading__user-location {
+  color: #838383; /* Dark mode text color */
+}
+
+@keyframes loadingAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
